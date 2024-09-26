@@ -17,6 +17,20 @@ resources:
           notebook_task:
             notebook_path: ./src/main/metadata_tables_check.ipynb
 
+    python-job:
+      name: BDS-QA-PYTHON-JOB
+      job_clusters:
+        - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          new_cluster:
+            num_workers: 1
+            spark_version: 14.3.x-scala2.12
+            node_type_id: Standard_DS3_v2
+      tasks:
+        - task_key: CHECK-BDS-QA-METADATA-TABLES
+          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          notebook_task:
+            notebook_path: ./src/main/Notebook.py
+
         # - task_key: Transform
         #   job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
         #   notebook_task:
