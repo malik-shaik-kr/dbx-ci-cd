@@ -15,12 +15,12 @@ resources:
         - task_key: Extract
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           notebook_task:
-            notebook_path: ./src/main/extract.py
+            notebook_path: ./src/main/extract
 
         - task_key: Transform
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           notebook_task:
-            notebook_path: ./src/main/transform.py
+            notebook_path: ./src/main/transform
           depends_on:
             - task_key: Extract
           run_if: ALL_SUCCESS
@@ -28,7 +28,7 @@ resources:
         - task_key: Load
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           notebook_task:
-            notebook_path: ./src/main/load.py
+            notebook_path: ./src/main/load
           depends_on:
             - task_key: Transform
           run_if: ALL_SUCCESS
