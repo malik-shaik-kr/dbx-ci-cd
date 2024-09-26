@@ -1,6 +1,6 @@
 resources:
   jobs:
-    python-job:
+    extract-job:
       name: BDS-QA-EXTRACT-JOB-MODULE
       job_clusters:
         - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
