@@ -1,51 +1,24 @@
 bundle:
   name: bds-qa-bundle
 
-resources:
-  jobs:
-    inference_job:
-      name: BDS-QA-SMOKE-JOB
-      job_clusters:
-        - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-          new_cluster:
-            num_workers: 1
-            spark_version: 14.3.x-scala2.12
-            node_type_id: Standard_DS3_v2
-      tasks:
-        - task_key: CHECK-BDS-QA-METADATA-TABLES
-          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-          notebook_task:
-            notebook_path: ./src/main/metadata_tables_check.ipynb
+include:
+  - "./jobs/bundle*.yml"
 
-    python-job:
-      name: BDS-QA-PYTHON-JOB
-      job_clusters:
-        - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-          new_cluster:
-            num_workers: 1
-            spark_version: 14.3.x-scala2.12
-            node_type_id: Standard_DS3_v2
-      tasks:
-        - task_key: CHECK-BDS-QA-METADATA-TABLES
-          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-          notebook_task:
-            notebook_path: ./src/main/Notebook.py
-
-        # - task_key: Transform
-        #   job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-        #   notebook_task:
-        #     notebook_path: ./src/main/transform
-        #   depends_on:
-        #     - task_key: Extract
-        #   run_if: ALL_SUCCESS
-
-        # - task_key: Load
-        #   job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-        #   notebook_task:
-        #     notebook_path: ./src/main/load
-        #   depends_on:
-        #     - task_key: Transform
-        #   run_if: ALL_SUCCESS
+# resources:
+#   jobs:
+#     inference_job:
+#       name: BDS-QA-SMOKE-JOB
+#       job_clusters:
+#         - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+#           new_cluster:
+#             num_workers: 1
+#             spark_version: 14.3.x-scala2.12
+#             node_type_id: Standard_DS3_v2
+#       tasks:
+#         - task_key: CHECK-BDS-QA-METADATA-TABLES
+#           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+#           notebook_task:
+#             notebook_path: ./src/main/metadata_tables_check.ipynb
 
 targets:
   dev:
