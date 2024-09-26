@@ -1,0 +1,33 @@
+resources:
+  jobs:
+    extract-job:
+      name: BDS-QA-EXTRACT-JOB-MODULE
+      base_parameters:
+        BDS_DB_NAME: "PipelineName"
+      job_clusters:
+        - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          new_cluster:
+            num_workers: 1
+            spark_version: 14.3.x-scala2.12
+            node_type_id: Standard_DS3_v2
+      tasks:
+        - task_key: Extract
+          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          notebook_task:
+            notebook_path: ../src/main/extract.py
+            base_parameters:
+              BDS_DB_NAME:
+
+        - task_key: Transform
+          depends_on:
+            - task_key: Extract
+          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          notebook_task:
+            notebook_path: ../src/main/transform.py
+
+        - task_key: Load
+          depends_on:
+            - task_key: Transform
+          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          notebook_task:
+            notebook_path: ../src/main/load.py
