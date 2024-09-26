@@ -1,7 +1,7 @@
 resources:
   jobs:
     python-job:
-      name: BDS-QA-PYTHON-JOB-MODULE
+      name: BDS-QA-EXTRACT-JOB-MODULE
       job_clusters:
         - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           new_cluster:
@@ -9,7 +9,7 @@ resources:
             spark_version: 14.3.x-scala2.12
             node_type_id: Standard_DS3_v2
       tasks:
-        - task_key: PYTHON-TASK
+        - task_key: Extract
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           notebook_task:
-            notebook_path: ../src/main/Notebook.py
+            notebook_path: ../src/main/extract.py
