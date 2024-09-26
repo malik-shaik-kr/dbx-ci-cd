@@ -2,14 +2,8 @@ resources:
   jobs:
     python-job:
       name: BDS-QA-PYTHON-JOB-MODULE
-      job_clusters:
-        - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
-          new_cluster:
-            num_workers: 1
-            spark_version: 14.3.x-scala2.12
-            node_type_id: Standard_DS3_v2
       tasks:
         - task_key: PYTHON-TASK
-          job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
