@@ -1,9 +1,7 @@
 resources:
   jobs:
-    extract-job:
-      name: BDS-QA-EXTRACT-JOB-MODULE
-      base_parameters:
-        BDS_DB_NAME: "PipelineName"
+    etl-job:
+      name: BDS-QA-ETL-JOB
       job_clusters:
         - job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
           new_cluster:
@@ -13,15 +11,22 @@ resources:
       tasks:
         - task_key: Extract
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          run_if: "ALL_SUCCESS"
           notebook_task:
             notebook_path: ../src/main/extract.py
             base_parameters:
-              BDS_DB_NAME:
+              JOB_ID: "{{job.id}}"
+              BDS_DB_NAME: ""
+              JOB_START_TIMESTAMP: "{{job.start_time.iso_datetime}}"
+              JOB_TRIGGER_TIMESTAMP: "{{job.trigger.time.iso_datetime}}"
+              JOB_RUN_ID: "{{job.run_id}}"
+              MD_BATCH_ID: ""
 
         - task_key: Transform
           depends_on:
             - task_key: Extract
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          run_if: "ALL_SUCCESS"
           notebook_task:
             notebook_path: ../src/main/transform.py
 
@@ -29,5 +34,6 @@ resources:
           depends_on:
             - task_key: Transform
           job_cluster_key: DBX-BDS-QA-BUNDLE-CLUSTER
+          run_if: "ALL_SUCCESS"
           notebook_task:
             notebook_path: ../src/main/load.py
