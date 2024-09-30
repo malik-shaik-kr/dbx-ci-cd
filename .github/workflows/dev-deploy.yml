@@ -1,41 +1,41 @@
-name: "DEV: Deploy Jobs to Databricks"
+# name: "DEV: Deploy Jobs to Databricks"
 
-on:
-  push:
-    branches:
-      - main # Adjust this to your main branch name
+# on:
+#   push:
+#     branches:
+#       - main # Adjust this to your main branch name
 
-  workflow_dispatch:
-    inputs:
-      BDS_DB_NAME:
-        description: Database Name
-        required: true
-        type: string
-    #   MD_BATCH_ID:
-    #     description: MD_BATCH_ID to validate
-    #     required: true
-    #     type: string
+#   workflow_dispatch:
+#     inputs:
+#       BDS_DB_NAME:
+#         description: Database Name
+#         required: true
+#         type: string
+#     #   MD_BATCH_ID:
+#     #     description: MD_BATCH_ID to validate
+#     #     required: true
+#     #     type: string
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Databricks CLI
-        uses: databricks/setup-cli@main
+#       - name: Set up Databricks CLI
+#         uses: databricks/setup-cli@main
 
-      - name: Write to .databrickscfg
-        run: |
-          echo "[DEFAULT]" > $HOME/.databrickscfg
-          echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
-          echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+#       - name: Write to .databrickscfg
+#         run: |
+#           echo "[DEFAULT]" > $HOME/.databrickscfg
+#           echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+#           echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
 
-      - name: Run databricks bundle deploy
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
-        run: databricks bundle deploy
-        # run: databricks bundle deploy --debug
+#       - name: Run databricks bundle deploy
+#         env:
+#           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+#           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+#           DATABRICKS_BUNDLE_ENV: dev
+#         run: databricks bundle deploy
+#         # run: databricks bundle deploy --debug

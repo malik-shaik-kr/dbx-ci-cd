@@ -1,0 +1,26 @@
+# name: Build
+
+# on:
+#   push:
+#     branches:
+#       - main # Adjust this to your main branch name
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch:
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+
+#       - name: Set up Databricks CLI
+#         uses: databricks/setup-cli@main
+
+#       - name: Write to .databrickscfg
+#         run: |
+#           echo "[DEFAULT]" > $HOME/.databrickscfg
+#           echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+#           echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
