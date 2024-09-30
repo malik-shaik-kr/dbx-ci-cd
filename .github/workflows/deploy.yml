@@ -1,4 +1,4 @@
-name: "DEV: Deploy Jobs to Databricks"
+name: "Deploy Jobs to Databricks"
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
         type: string
 
 jobs:
-  dev_deploy:
+  dev:
     name: Deploy to DEV
     runs-on: ubuntu-latest
     environment: Development
@@ -46,9 +46,9 @@ jobs:
           databricks bundle validate
           databricks bundle deploy
 
-  stage_deploy:
+  stage:
     name: Deploy to Stage
-    needs: [dev_deploy]
+    needs: [dev]
     runs-on: ubuntu-latest
     environment: Staging
     steps:
@@ -76,4 +76,3 @@ jobs:
         run: |
           databricks bundle validate
           databricks bundle deploy
-        # run: databricks bundle deploy --debug
