@@ -40,7 +40,7 @@ jobs:
   deploy:
     name: Validate Bundle
     if: github.event_name == 'pull_request'
-    needs: [build]
+    needs: [validate]
     runs-on: ubuntu-latest
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
