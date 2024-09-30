@@ -10,3 +10,5 @@ BDS_DB_NAME = dbutils.widgets.get(name="BDS_DB_NAME")
 
 params: dict = dbutils.widgets.getAll()
 print(pformat(params))
+
+print("SUCCESS")

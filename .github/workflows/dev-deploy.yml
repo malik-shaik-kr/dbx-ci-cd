@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main # Adjust this to your main branch name
+  pull_request:
+    branches:
+      - main
 
   workflow_dispatch:
     inputs:
@@ -14,7 +17,9 @@ on:
 
 jobs:
   deploy:
+    name: Deploy to DEV
     runs-on: ubuntu-latest
+    environment: Development
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
