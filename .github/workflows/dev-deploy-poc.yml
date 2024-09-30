@@ -1,53 +1,53 @@
-## Not working, Bad Luck
-name: Build
+# ## Not working, Bad Luck
+# name: Build
 
-on:
-  push:
-    branches:
-      - main # Adjust this to your main branch name
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main # Adjust this to your main branch name
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+# jobs:
+#   build:
+#     name: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Databricks CLI
-        uses: databricks/setup-cli@main
+#       - name: Set up Databricks CLI
+#         uses: databricks/setup-cli@main
 
-      - name: Write to .databrickscfg
-        run: |
-          echo "[DEFAULT]" > $HOME/.databrickscfg
-          echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
-          echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+#       - name: Write to .databrickscfg
+#         run: |
+#           echo "[DEFAULT]" > $HOME/.databrickscfg
+#           echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+#           echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
 
-  validate:
-    name: Validate Bundle
-    if: github.event_name == 'pull_request'
-    needs: [build]
-    runs-on: ubuntu-latest
-    env:
-      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-    steps:
-      - name: Run DBX Bundle Validate
-        run: databricks bundle validate
+#   validate:
+#     name: Validate Bundle
+#     if: github.event_name == 'pull_request'
+#     needs: [build]
+#     runs-on: ubuntu-latest
+#     env:
+#       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+#       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+#     steps:
+#       - name: Run DBX Bundle Validate
+#         run: databricks bundle validate
 
-  deploy:
-    name: Deploy Bundle
-    if: github.event_name == 'pull_request'
-    needs: [validate]
-    runs-on: ubuntu-latest
-    env:
-      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      DATABRICKS_BUNDLE_ENV: dev
-    steps:
-      - name: Run DBX Bundle Deploy
-        run: databricks bundle deploy
+#   deploy:
+#     name: Deploy Bundle
+#     if: github.event_name == 'pull_request'
+#     needs: [validate]
+#     runs-on: ubuntu-latest
+#     env:
+#       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+#       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+#       DATABRICKS_BUNDLE_ENV: dev
+#     steps:
+#       - name: Run DBX Bundle Deploy
+#         run: databricks bundle deploy
