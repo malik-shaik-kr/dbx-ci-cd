@@ -1,3 +1,4 @@
+## Not working, Bad Luck
 name: Build
 
 on:
@@ -11,6 +12,7 @@ on:
 
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,7 +40,7 @@ jobs:
         run: databricks bundle validate
 
   deploy:
-    name: Validate Bundle
+    name: Deploy Bundle
     if: github.event_name == 'pull_request'
     needs: [validate]
     runs-on: ubuntu-latest
