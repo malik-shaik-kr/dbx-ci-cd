@@ -33,6 +33,10 @@ jobs:
           echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
           echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
 
+      - name: Set BDS_DB_NAME output
+        id: set_bds_db_name
+        run: echo "::set-output name=bds_db_name::${{ github.event.inputs.BDS_DB_NAME }}"
+
       - name: Run databricks bundle deploy
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}

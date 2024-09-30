@@ -24,3 +24,6 @@ targets:
   dev:
     default: true
   stage:
+    default: false
+  production:
+    default: false
