@@ -23,3 +23,4 @@ include:
 targets:
   dev:
     default: true
+  stage:
