@@ -2,7 +2,7 @@ name: "STAGE: Deploy Jobs to Databricks"
 
 on:
   workflow_run:
-    workflows: ["Deploy to DEV"]
+    workflows: ["Deploy to DEV", "deploy"]
     types:
       - completed
 
