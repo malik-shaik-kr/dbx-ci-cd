@@ -1,0 +1,12 @@
+name: "Deploy Jobs to Databricks"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dummy:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "Hello World"
