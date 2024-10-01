@@ -1,13 +1,6 @@
 name: "Deploy Jobs to Databricks"
 
 on:
-  push:
-    branches:
-      - main # Adjust this to your main branch name
-  pull_request:
-    branches:
-      - main
-
   workflow_dispatch:
     inputs:
       BDS_DB_NAME:
@@ -45,34 +38,51 @@ jobs:
         run: |
           databricks bundle validate
           databricks bundle deploy
-
   stage:
     name: Deploy to Stage
     needs: [dev]
     runs-on: ubuntu-latest
     environment: Staging
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Deploy JOBS to Stage
+        run: echo "DBX Jobs have been successfully deployed to Stage"
 
-      - name: Set up Databricks CLI
-        uses: databricks/setup-cli@main
+  prod:
+    name: Deploy to Production
+    needs: [stage]
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Deploy JOBS to Production
+        run: echo "DBX Jobs have been successfully deployed to Production"
 
-      - name: Write to .databrickscfg
-        run: |
-          echo "[DEFAULT]" > $HOME/.databrickscfg
-          echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
-          echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+  # stage:
+  #   name: Deploy to Stage
+  #   needs: [dev]
+  #   runs-on: ubuntu-latest
+  #   environment: Staging
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
 
-      - name: Set BDS_DB_NAME output
-        id: set_bds_db_name
-        run: echo "::set-output name=bds_db_name::${{ github.event.inputs.BDS_DB_NAME }}"
+  #     - name: Set up Databricks CLI
+  #       uses: databricks/setup-cli@main
 
-      - name: Run databricks bundle deploy
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: stage
-        run: |
-          databricks bundle validate
-          databricks bundle deploy
+  #     - name: Write to .databrickscfg
+  #       run: |
+  #         echo "[DEFAULT]" > $HOME/.databrickscfg
+  #         echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+  #         echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+
+  #     - name: Set BDS_DB_NAME output
+  #       id: set_bds_db_name
+  #       run: echo "::set-output name=bds_db_name::${{ github.event.inputs.BDS_DB_NAME }}"
+
+  #     - name: Run databricks bundle deploy
+  #       env:
+  #         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+  #         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+  #         DATABRICKS_BUNDLE_ENV: stage
+  #       run: |
+  #         databricks bundle validate
+  #         databricks bundle deploy
