@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
-    name: ⌛ Build and Validate
+  build-and-validate:
+    name: Build ⌛ and Validate ❗
     runs-on: ubuntu-latest
     environment: Development
 
@@ -35,11 +35,10 @@ jobs:
           DATABRICKS_BUNDLE_ENV: dev
         run: |
           databricks bundle validate
-          databricks bundle deploy
 
   build-and-deploy:
-    name: ⌛ Build and Validate
-    needs: [build-and-test]
+    name: Build ⌛ and Deploy 🚀
+    needs: [build-and-validate]
     runs-on: ubuntu-latest
     environment: Development
 
