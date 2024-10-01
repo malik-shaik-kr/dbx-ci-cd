@@ -1,0 +1,64 @@
+name: "Build and Test"
+
+on:
+  push:
+    branches:
+      - main # Adjust this to your main branch name
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-validate:
+    name: Build ⌛ and Validate ❗
+    runs-on: ubuntu-latest
+    environment: Development
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Write to .databrickscfg
+        run: |
+          echo "[DEFAULT]" > $HOME/.databrickscfg
+          echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+          echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+
+      - name: Run databricks bundle validate
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+        run: |
+          databricks bundle validate
+
+  build-and-deploy:
+    name: Build ⌛ and Deploy 🚀
+    needs: [build-and-validate]
+    runs-on: ubuntu-latest
+    environment: Development
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Write to .databrickscfg
+        run: |
+          echo "[DEFAULT]" > $HOME/.databrickscfg
+          echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
+          echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
+
+      - name: Run databricks bundle deploy
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+        run: |
+          databricks bundle deploy
