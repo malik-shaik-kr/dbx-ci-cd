@@ -12,4 +12,4 @@ resources:
       permissions:
         - user: megala.sinnaraj@kroger.com
           level: CAN_MANAGE
-          service_principal_name: 0e0b63eb-e16d-4ee3-bcdd-8261ca6a9d0c
+          service_principal_name: "a6c416ff-832c-428f-bd3f-9468c7a7aba4"
