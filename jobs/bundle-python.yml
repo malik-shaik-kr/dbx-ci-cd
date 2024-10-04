@@ -9,10 +9,10 @@ resources:
             notebook_path: ../src/main/Notebook.py
       timeout_seconds: 3600
 
-    permissions:
-      - user: megala.sinnaraj@kroger.com
-        level: CAN_MANAGE
-      - user: lakshmi.kanumur@kroger.com
-        level: CAN_MANAGE
-      - user: koushik.tirumanyam@kroger.com
-        level: CAN_MANAGE
+      permissions:
+        - user: megala.sinnaraj@kroger.com
+          level: CAN_MANAGE
+        - user: lakshmi.kanumur@kroger.com
+          level: CAN_MANAGE
+        - user: koushik.tirumanyam@kroger.com
+          level: CAN_MANAGE
