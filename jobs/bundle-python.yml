@@ -7,9 +7,3 @@ resources:
           existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
-      timeout_seconds: 3600
-
-      permissions:
-        - user: megala.sinnaraj@kroger.com
-          level: CAN_MANAGE
-          service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
