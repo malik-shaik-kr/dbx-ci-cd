@@ -8,11 +8,10 @@ resources:
           notebook_task:
             notebook_path: ../src/main/Notebook.py
       permissions:
-        access_control:
-          - user: megala.sinnaraj@kroger.com
-            permission_level: CAN_MANAGE
-          - user: lakshmi.kanumur@kroger.com
-            permission_level: CAN_MANAGE
-          - user: koushik.tirumanyam@kroger.com
-            permission_level: CAN_MANAGE
+        - user: megala.sinnaraj@kroger.com
+          permission_level: CAN_MANAGE
+        - user: lakshmi.kanumur@kroger.com
+          permission_level: CAN_MANAGE
+        - user: koushik.tirumanyam@kroger.com
+          permission_level: CAN_MANAGE
       timeout_seconds: 3600
