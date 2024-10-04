@@ -12,4 +12,4 @@ resources:
       permissions:
         - user: megala.sinnaraj@kroger.com
           level: CAN_MANAGE
-          service_principal_name: "a6c416ff-832c-428f-bd3f-9468c7a7aba4"
+          service_principal_name: "sp-rsd-bulkdataservice-dbx-nonprod"
