@@ -4,10 +4,6 @@ bundle:
 include:
   - "./jobs/bundle*.yml"
 
-permissions:
-  - level: CAN_MANAGE
-    service_principal_name: ${{ env.AZ_SPN_APP_ID }}
-
 # resources:
 #   jobs:
 #     inference_job:
@@ -27,6 +23,9 @@ permissions:
 targets:
   dev:
     default: true
+    permissions:
+      - level: CAN_MANAGE
+        service_principal_name: ${{ env.AZ_SPN_APP_ID }}
   stage:
     default: false
   production:
