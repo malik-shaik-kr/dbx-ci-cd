@@ -8,5 +8,5 @@ resources:
           notebook_task:
             notebook_path: ../src/main/Notebook.py
     permissions:
-      - service_principal_name: "${{secrets.AZ_SPN_APP_ID}}"
+      - service_principal_name: "${{env.AZ_SPN_APP_ID}}"
         level: CAN_MANAGE

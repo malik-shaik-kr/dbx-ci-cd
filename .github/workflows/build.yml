@@ -63,4 +63,4 @@ jobs:
           DATABRICKS_BUNDLE_ENV: dev
         run: |
           echo "Using Service Principal ID: $AZ_SPN_APP_ID"  # For debugging
-          databricks bundle deploy --debug
+          databricks bundle deploy
