@@ -33,6 +33,7 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
+          AZ_SPN_APP_ID: ${{ secrets.AZ_SPN_APP_ID }}
         run: |
           databricks bundle validate
 
