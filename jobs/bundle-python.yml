@@ -12,3 +12,4 @@ resources:
       permissions:
         - user: megala.sinnaraj@kroger.com
           level: CAN_MANAGE
+          service_principal_name: "sp-BulkDataService-10568-nonprod-deployer"
