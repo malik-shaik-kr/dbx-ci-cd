@@ -4,9 +4,6 @@ bundle:
 include:
   - "./jobs/bundle*.yml"
 
-run_as:
-  - service_principal_name: "${{ env.AZ_SPN_APP_ID }}"
-
 # resources:
 #   jobs:
 #     inference_job:
@@ -26,6 +23,8 @@ run_as:
 targets:
   dev:
     default: true
+    run_as:
+      - service_principal_name: "${{ env.AZ_SPN_APP_ID }}"
   stage:
     default: false
   production:
