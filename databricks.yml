@@ -24,7 +24,7 @@ targets:
   dev:
     default: true
     run_as:
-      service_principal_name: ${{ env.AZ_SPN_APP_ID }}
+      - service_principal_name: ${{ env.AZ_SPN_APP_ID }}
   stage:
     default: false
   production:
