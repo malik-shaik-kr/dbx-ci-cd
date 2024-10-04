@@ -12,7 +12,3 @@ resources:
       permissions:
         - user: megala.sinnaraj@kroger.com
           level: CAN_MANAGE
-        - user: lakshmi.kanumur@kroger.com
-          level: CAN_MANAGE
-        - user: koushik.tirumanyam@kroger.com
-          level: CAN_MANAGE
