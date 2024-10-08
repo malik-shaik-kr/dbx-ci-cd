@@ -55,6 +55,10 @@ jobs:
           echo "host = $DATABRICKS_HOST" >> $HOME/.databrickscfg
           echo "token = $DATABRICKS_TOKEN" >> $HOME/.databrickscfg
 
+      - name: Write env
+        run: |
+          echo "AZ_SPN_APP_ID=${{ secrets.AZ_SPN_APP_ID }}">>$GITHUB_ENV
+
       - name: Run databricks bundle deploy
         env:
           AZ_SPN_APP_ID: ${{ secrets.AZ_SPN_APP_ID }}
