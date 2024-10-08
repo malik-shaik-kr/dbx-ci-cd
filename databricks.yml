@@ -25,13 +25,16 @@ include:
 #           notebook_task:
 #             notebook_path: ./src/main/metadata_tables_check.ipynb
 
+# workspace:
+#   root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/my-envs/${bundle.target}
+
 targets:
   dev:
     default: true
     permissions:
       - level: CAN_MANAGE
         # service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
-        service_principal_name: "echo $DBX_SP_APP_ID_DEV"
+        service_principal_name: "$DBX_SP_APP_ID_DEV"
   stage:
     default: false
   production:
