@@ -58,6 +58,7 @@ jobs:
       - name: Run databricks bundle deploy
         env:
           AZ_SPN_APP_ID: ${{ secrets.AZ_SPN_APP_ID }}
+          DBX_SP_APP_ID_DEV: ${{ secrets.DBX_SP_APP_ID_DEV }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
