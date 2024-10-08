@@ -6,7 +6,8 @@ include:
 
 permissions:
   - level: CAN_MANAGE
-    service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
+    # service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
+    service_principal_name: "${{ secrets.DBX_SP_APP_ID_DEV }}"
 
 # resources:
 #   jobs:
