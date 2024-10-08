@@ -33,8 +33,8 @@ targets:
     default: true
     permissions:
       - level: CAN_MANAGE
-        # service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
-        service_principal_name: "$AZ_SPN_APP_ID"
+        service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
+        # service_principal_name: "$AZ_SPN_APP_ID"
   stage:
     default: false
   production:

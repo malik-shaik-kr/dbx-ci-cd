@@ -7,3 +7,7 @@ resources:
           existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
+
+      email_notifications:
+        on_failure:
+          - megala.sinnaraj@kroger.com
