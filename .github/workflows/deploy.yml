@@ -1,6 +1,9 @@
 name: "Deploy Jobs to Databricks"
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       BDS_DB_NAME:
