@@ -36,7 +36,8 @@ targets:
   dev:
     default: true
     variables:
-      ENV_NAME: "DBX Variables"
+      ENV_NAME: "${{env.ENV_NAME}}"
+      # ENV_NAME: "DBX Variables"
 
     permissions:
       - level: CAN_MANAGE
