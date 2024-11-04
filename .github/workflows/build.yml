@@ -63,6 +63,7 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_ENV: dev
+          ENV_NAME: "I am ENV"
         run: |
           echo "Using Service Principal ID: $AZ_SPN_APP_ID"  # For debugging
           databricks bundle deploy
