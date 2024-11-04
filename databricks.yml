@@ -31,7 +31,10 @@ include:
 targets:
   dev:
     default: true
-    # variables:
+    variables:
+      ENV_NAME:
+        description: <variable-description>
+        default: "Development"
     permissions:
       - level: CAN_MANAGE
         service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
