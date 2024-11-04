@@ -1,13 +1,20 @@
 resources:
   jobs:
-    python-job:
-      name: BDS-QA-PYTHON-JOB-MODULE
+    welcome-job:
+      name: BDS-QA-WELCOME-JOB
+      description: This is a Basic Python job created using GitHub Actions and deployed using Databricks Asset Bundles
       tasks:
-        - task_key: PYTHON-TASK
+        - task_key: BDS-QA-WELCOME-TASK
           existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
 
+      parameters:
+        - name: env
+          default: "$env_var"
+
       email_notifications:
-        on_failure:
+        on_success:
           - megala.sinnaraj@kroger.com
+        on_failure:
+          - malik.shaik@kroger.com

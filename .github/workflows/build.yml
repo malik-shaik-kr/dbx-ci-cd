@@ -4,7 +4,8 @@ on:
   pull_request:
     branches:
       - main
-
+env:
+  env_var: "Env-VariableFor Multiple"
 jobs:
   # build-and-validate:
   #   name: Build ⌛ and Validate ❗
