@@ -11,7 +11,7 @@ resources:
 
       parameters:
         - name: env
-          default: "${env.DATABRICKS_BUNDLE_ENV}"
+          default: "${var.ENV_NAME}"
 
       email_notifications:
         on_success:
