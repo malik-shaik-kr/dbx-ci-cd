@@ -63,7 +63,7 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           BUNDLE_VAR_ENV_NAME: "I am ENV from ROOT"
-          ENV_NAME: "I am ENV from ROOT"
+          ENV_NAME: "I am ENV from ROOT - Build"
           DATABRICKS_BUNDLE_ENV: dev
         run: |
           echo "Using Service Principal ID: $AZ_SPN_APP_ID"  # For debugging
