@@ -35,8 +35,12 @@ jobs:
 
       - name: Run databricks bundle deploy
         env:
+          AZ_SPN_APP_ID: ${{ secrets.AZ_SPN_APP_ID }}
+          DBX_SP_APP_ID_DEV: ${{ secrets.DBX_SP_APP_ID_DEV }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          BUNDLE_VAR_ENV_NAME: "I am ENV from ROOT"
+          ENV_NAME: "I am ENV from ROOT"
           DATABRICKS_BUNDLE_ENV: dev
         run: |
           databricks bundle validate
