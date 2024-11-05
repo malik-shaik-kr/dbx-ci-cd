@@ -40,7 +40,7 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           BUNDLE_VAR_ENV_NAME: "I am ENV from ROOT"
-          ENV_NAME: "I am ENV from ROOT"
+          ENV_NAME: "I am ENV from ROOT - Deploy"
           DATABRICKS_BUNDLE_ENV: dev
         run: |
           databricks bundle validate
