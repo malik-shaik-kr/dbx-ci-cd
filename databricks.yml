@@ -48,7 +48,8 @@ targets:
         # service_principal_name: "$AZ_SPN_APP_ID"
     resources:
       jobs:
-        BDS-QA-AUTOMATION-JOB:
+        welcome-job:
+          # BDS-QA-AUTOMATION-JOB:
           schedule:
             quartz_cron_expression: 0 0 0/8 * * ?
             timezone_id: UTC
