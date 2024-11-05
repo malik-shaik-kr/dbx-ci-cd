@@ -3,7 +3,9 @@ bundle:
 
 variables:
   ENV_NAME:
-    description: <variable-description>
+    description: ENV_NAME
+  BUNDLE_VAR_ENV_NAME:
+    description: BUNDLE_VAR_ENV_NAME
 
 include:
   - "./jobs/bundle*.yml"
