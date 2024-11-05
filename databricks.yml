@@ -37,15 +37,24 @@ include:
 targets:
   dev:
     default: true
-    variables:
-      # ENV_NAME: "dev"
-      BUNDLE_VAR_ENV_NAME: "$BUNDLE_VAR_ENV_NAME"
-      ENV_NAME: "DBX Variables"
+    # variables:
+    #   # ENV_NAME: "dev"
+    #   BUNDLE_VAR_ENV_NAME: "$BUNDLE_VAR_ENV_NAME"
+    #   ENV_NAME: "DBX Variables"
 
     permissions:
       - level: CAN_MANAGE
         service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
         # service_principal_name: "$AZ_SPN_APP_ID"
+    resources:
+      jobs:
+        BDS-QA-AUTOMATION-JOB:
+          name: BDS-QA-AUTOMATION-JOB
+          description: This job is designed to validate the functionality and integrity of data engineering processes. It systematically tests data pipelines, transformations, and overall data quality to ensure that all components operate as intended. This job was created using GitHub Actions and deployed using Databricks Asset Bundles.
+          schedule:
+            quartz_cron_expression: 0 0 0/8 * * ?
+            timezone_id: UTC
+            pause_status: UNPAUSED
   stage:
     default: false
   production:
