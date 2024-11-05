@@ -4,6 +4,7 @@ bundle:
 variables:
   ENV_NAME:
     description: ENV_NAME
+    default: "${{env.ENV_NAME}}"
   BUNDLE_VAR_ENV_NAME:
     description: BUNDLE_VAR_ENV_NAME
 
@@ -39,7 +40,7 @@ targets:
     default: true
     variables:
       ENV_NAME: "dev"
-      BUNDLE_VAR_ENV_NAME: "${{ env.BUNDLE_VAR_ENV_NAME }}"
+      # BUNDLE_VAR_ENV_NAME: "${{ env.BUNDLE_VAR_ENV_NAME }}"
       # ENV_NAME: "DBX Variables"
 
     permissions:
