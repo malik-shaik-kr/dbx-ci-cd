@@ -13,7 +13,7 @@ resources:
         - name: env
           default: "${var.ENV_NAME}"
         - name: BUNDLE_VAR_ENV_NAME
-          default:: "${var.BUNDLE_VAR_ENV_NAME}"
+          default: "${var.BUNDLE_VAR_ENV_NAME}"
 
       email_notifications:
         on_success:
