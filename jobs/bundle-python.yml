@@ -3,6 +3,10 @@ resources:
     welcome-job:
       name: TMP-BDS-QA-WELCOME-JOB
       description: This is a Basic Python job created using GitHub Actions and deployed using Databricks Asset Bundles
+      schedule:
+        quartz_cron_expression: 0 0 0/8 * * ?
+        timezone_id: UTC
+        pause_status: UNPAUSED
       tasks:
         - task_key: TMP-BDS-QA-WELCOME-TASK
           existing_cluster_id: 0926-011623-2cqmpzng
