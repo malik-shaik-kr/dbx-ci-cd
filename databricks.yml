@@ -49,8 +49,6 @@ targets:
     resources:
       jobs:
         BDS-QA-AUTOMATION-JOB:
-          name: BDS-QA-AUTOMATION-JOB
-          description: This job is designed to validate the functionality and integrity of data engineering processes. It systematically tests data pipelines, transformations, and overall data quality to ensure that all components operate as intended. This job was created using GitHub Actions and deployed using Databricks Asset Bundles.
           schedule:
             quartz_cron_expression: 0 0 0/8 * * ?
             timezone_id: UTC
