@@ -35,7 +35,7 @@ jobs:
 
       - name: Run databricks bundle deploy
         env:
-          BUNDLE_VAR_ENV_NAME: "Env Variables from DEPLOY File"
+          BUNDLE_VAR_BDS_QA_ENV: "Env Variables from DEPLOY File"
           AZ_SPN_APP_ID: ${{ secrets.AZ_SPN_APP_ID }}
           DBX_SP_APP_ID_DEV: ${{ secrets.DBX_SP_APP_ID_DEV }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}

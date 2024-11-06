@@ -16,7 +16,7 @@ resources:
 
       parameters:
         - name: env
-          default: "${var.ENV_NAME}"
+          default: "${var.bds_qa_name}"
         # - name: BUNDLE_VAR_ENV_NAME
         #   default: "${var.BUNDLE_VAR_ENV_NAME}"
 
