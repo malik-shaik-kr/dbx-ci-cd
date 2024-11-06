@@ -2,7 +2,7 @@ bundle:
   name: bds-qa-bundle
 
 variables:
-  bds_qa_name:
+  BDS_QA_ENV:
     description: ENV_NAME
   # BUNDLE_VAR_ENV_NAME:
   #   description: BUNDLE_VAR_ENV_NAME
