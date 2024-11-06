@@ -9,6 +9,10 @@ variables:
   service_principal_name:
     description: service_principal_name
 
+permissions:
+  - level: CAN_MANAGE
+    user_name: malik.shaik@kroger.com
+
 include:
   - "./jobs/bundle*.yml"
 
@@ -20,10 +24,9 @@ include:
     enable_elastic_disk: true
     spark_env_vars:
       DATABRICKS_HOST: "{{secrets/keyvault-managed/databricks-host}}"
-      ENVIRONMENT: ${bundle.target}
-      DOMAIN: bds
       DATABRICKS_TOKEN: "{{secrets/keyvault-managed/dbx-sp-access-token}}"
       DD_API_KEY: "{{secrets/keyvault-managed/dd-api-key}}"
+      BDS_QA_ENV: ${bundle.target}
     spark_version: 12.2.x-scala2.12
     autoscale:
       min_workers: 1
@@ -78,9 +81,8 @@ targets:
           job_clusters:
             - job_cluster_key: BDS-QA-AUTOMATION-JOB-CLUSTER
               <<: *job_cluster
-          # BDS-QA-AUTOMATION-JOB:
           schedule:
-            quartz_cron_expression: 0 0 0/6 * * ?
+            quartz_cron_expression: 0 0 0/12 * * ?
             timezone_id: UTC
             pause_status: UNPAUSED
   stage:
