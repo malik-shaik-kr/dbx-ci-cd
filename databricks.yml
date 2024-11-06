@@ -72,6 +72,9 @@ targets:
     resources:
       jobs:
         welcome-job:
+          job_clusters:
+            - job_cluster_key: BDS-QA-AUTOMATION-JOB-CLUSTER
+              <<: *job_cluster
           # BDS-QA-AUTOMATION-JOB:
           schedule:
             quartz_cron_expression: 0 0 0/6 * * ?
