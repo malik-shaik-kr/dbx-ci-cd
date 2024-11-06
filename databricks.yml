@@ -6,6 +6,8 @@ variables:
     description: ENV_NAME
   BUNDLE_VAR_ENV_NAME:
     description: BUNDLE_VAR_ENV_NAME
+  service_principal_name:
+    description: service_principal_name
 
 include:
   - "./jobs/bundle*.yml"
@@ -67,7 +69,8 @@ targets:
 
     permissions:
       - level: CAN_MANAGE
-        service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
+        service_principal_name: "${var.service_principal_name}"
+        # service_principal_name: "8b44e547-62e3-48bc-b34e-8374a4639206"
         # service_principal_name: "$AZ_SPN_APP_ID"
     resources:
       jobs:

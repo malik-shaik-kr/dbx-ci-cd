@@ -62,9 +62,6 @@ jobs:
           DBX_SP_APP_ID_DEV: ${{ secrets.DBX_SP_APP_ID_DEV }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          BUNDLE_VAR_ENV_NAME: "I am ENV from ROOT"
-          ENV_NAME: "I am ENV from ROOT - Build"
           DATABRICKS_BUNDLE_ENV: dev
         run: |
-          echo "Using Service Principal ID: $AZ_SPN_APP_ID"  # For debugging
-          databricks bundle deploy
+          databricks bundle validate --var="BUNDLE_VAR_ENV_NAME=BUNDLE_VAR_ENV_NAME,service_principal_name=8b44e547-62e3-48bc-b34e-8374a4639206"
