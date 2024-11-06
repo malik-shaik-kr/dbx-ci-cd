@@ -9,7 +9,7 @@ resources:
         pause_status: UNPAUSED
       tasks:
         - task_key: TMP-BDS-QA-WELCOME-TASK
-          existing_cluster_id: 0926-011623-2cqmpzng
+          # existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
 
