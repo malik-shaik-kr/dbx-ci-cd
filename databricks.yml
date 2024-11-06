@@ -4,8 +4,8 @@ bundle:
 variables:
   ENV_NAME:
     description: ENV_NAME
-  BUNDLE_VAR_ENV_NAME:
-    description: BUNDLE_VAR_ENV_NAME
+  # BUNDLE_VAR_ENV_NAME:
+  #   description: BUNDLE_VAR_ENV_NAME
   service_principal_name:
     description: service_principal_name
 
