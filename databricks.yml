@@ -18,7 +18,7 @@ include:
     enable_elastic_disk: true
     spark_env_vars:
       DATABRICKS_HOST: "{{secrets/keyvault-managed/databricks-host}}"
-      ENVIRONMENT: ${bundle.name}
+      ENVIRONMENT: ${bundle.target.name}
       DOMAIN: bds
       DATABRICKS_TOKEN: "{{secrets/keyvault-managed/dbx-sp-access-token}}"
       DD_API_KEY: "{{secrets/keyvault-managed/dd-api-key}}"
