@@ -27,14 +27,14 @@ include:
       DATABRICKS_TOKEN: "{{secrets/keyvault-managed/dbx-sp-access-token}}"
       DD_API_KEY: "{{secrets/keyvault-managed/dd-api-key}}"
       BDS_QA_ENV: ${bundle.target}
-    spark_version: 12.2.x-scala2.12
+    spark_version: 15.4.x-scala2.12
     autoscale:
       min_workers: 1
-      max_workers: 3
+      max_workers: 1
     azure_attributes:
       availability: ON_DEMAND_AZURE
       first_on_demand: 1
-    node_type_id: Standard_DS3_v2
+    node_type_id: Standard_D4ds_v5
     data_security_mode: SINGLE_USER
     runtime_engine: STANDARD
 
@@ -77,12 +77,12 @@ targets:
         # service_principal_name: "$AZ_SPN_APP_ID"
     resources:
       jobs:
-        welcome-job:
+        dd-test-job:
           job_clusters:
-            - job_cluster_key: BDS-QA-AUTOMATION-JOB-CLUSTER
+            - job_cluster_key: BDS-QA-JOB-CLUSTER
               <<: *job_cluster
           schedule:
-            quartz_cron_expression: 0 0 0/12 * * ?
+            quartz_cron_expression: 0 0 5 * * ?
             timezone_id: UTC
             pause_status: UNPAUSED
   stage:

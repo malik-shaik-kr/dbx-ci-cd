@@ -1,15 +1,15 @@
 resources:
   jobs:
-    welcome-job:
-      name: TMP-BDS-QA-WELCOME-JOB
+    dd-test-job:
+      name: DD-TEST-JOB
       description: This is a Basic Python job created using GitHub Actions and deployed using Databricks Asset Bundles
       schedule:
         quartz_cron_expression: 0 0 0/8 * * ?
         timezone_id: UTC
         pause_status: UNPAUSED
       tasks:
-        - task_key: TMP-BDS-QA-WELCOME-TASK
-          job_cluster_key: BDS-QA-AUTOMATION-JOB-CLUSTER
+        - task_key: DD-TEST-TASK
+          job_cluster_key: BDS-QA-JOB-CLUSTER
           # existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
             notebook_path: ../src/main/Notebook.py
