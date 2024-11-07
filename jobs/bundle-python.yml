@@ -19,8 +19,14 @@ resources:
           default: "${var.BDS_QA_ENV}"
         - name: BDS_QA_ENV_PARAM
           default: ${bundle.target}
-        # - name: BUNDLE_VAR_ENV_NAME
-        #   default: "${var.BUNDLE_VAR_ENV_NAME}"
+        - name: JOB_START_TIMESTAMP
+          default: "{{job.start_time.iso_datetime}}"
+        - name: JOB_TRIGGER_TIMESTAMP
+          default: "{{job.trigger.time.iso_datetime}}"
+        - name: JOB_ID
+          default: "{{job.id}}"
+        - name: JOB_RUN_ID
+          default: "{{job.run_id}}"
 
       email_notifications:
         on_success:
