@@ -51,7 +51,7 @@ tracker.record(
     violations=1,
     duration=(end_dt - start_dt).total_seconds(),
     log={
-        "name": "bds-dummy-daily-count",
+        "bds-record-name": "bds-dummy-daily-count",
         "transaction_date": datetime.now(pytz.utc).isoformat(),
         "bds_dummy_count": bds_dummy_count,
         **params,
