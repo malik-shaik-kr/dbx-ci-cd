@@ -23,10 +23,12 @@ include:
           destination: /Shared/scripts/cluster-init.sh
     enable_elastic_disk: true
     spark_env_vars:
+      BDS_QA_ENV: ${bundle.target}
       DATABRICKS_HOST: "{{secrets/keyvault-managed/databricks-host}}"
       DATABRICKS_TOKEN: "{{secrets/keyvault-managed/dbx-sp-access-token}}"
       DD_API_KEY: "{{secrets/keyvault-managed/dd-api-key}}"
-      BDS_QA_ENV: ${bundle.target}
+      DOMAIN: bds
+      ENVIRONMENT: nonprod
     spark_version: 15.4.x-scala2.12
     autoscale:
       min_workers: 1
