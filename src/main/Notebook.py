@@ -30,7 +30,7 @@ tracker = Tracker(
         domain="BDS",
         name="BDS-QA-AUTOMATION",
         job_id=params.get("JOB_ID", 1),
-        run_id=params.get("RUN_ID", 1),
+        run_id=params.get("JOB_RUN_ID", 1),
         transaction_id=0,
         tags={"env": "Development", "searchKey": "BDS_QA_DD"},
     )
