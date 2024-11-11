@@ -66,6 +66,8 @@ include:
 
 targets:
   dev:
+    presets:
+      name_prefix: "DEV-" # prefix all resource names with testing_
     default: true
     # variables:
     #   # ENV_NAME: "dev"
