@@ -23,7 +23,7 @@ print(pformat(params))
 
 # COMMAND ----------
 
-bds_dummy_count: int = random.randint(1, 999999)
+bds_count: int = random.randint(1, 999999)
 
 tracker = Tracker(
     Application(
@@ -46,15 +46,15 @@ end_dt = datetime.now(timezone.utc)
 # Now use bds_count in the tracker.record function
 tracker.record(
     layer=MedallionLayer.LANDING,
-    records=bds_dummy_count,
-    accepted=bds_dummy_count,
+    records=bds_count,
+    accepted=bds_count,
     violations=1,
     duration=(end_dt - start_dt).total_seconds(),
     log={
-        "bds-record-name": "bds-dummy-daily-count",
-        "transaction_date": datetime.now(pytz.utc).isoformat(),
-        "bds_dummy_count": bds_dummy_count,
-        **params,
+        "bds-record-name": "bds-daily-count",
+        "trxdate": datetime.now(pytz.utc).date(),
+        "bds_count": bds_count,
+        "job_params": params,
     },
 )
 
