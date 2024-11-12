@@ -27,7 +27,7 @@ include:
       DATABRICKS_HOST: "{{secrets/keyvault-managed/databricks-host}}"
       DATABRICKS_TOKEN: "{{secrets/keyvault-managed/dbx-sp-access-token}}"
       DD_API_KEY: "{{secrets/keyvault-managed/dd-api-key}}"
-      # DOMAIN: bds
+      DOMAIN: bds
       ENVIRONMENT: nonprod
     spark_version: 15.4.x-scala2.12
     autoscale:
