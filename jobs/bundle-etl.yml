@@ -37,3 +37,15 @@
 #           run_if: "ALL_SUCCESS"
 #           notebook_task:
 #             notebook_path: ../src/main/load.py
+
+resources:
+  jobs:
+    ddl-testing:
+      name: DDL-METRICS
+      description: This is a Basic Python job created using GitHub Actions and deployed using Databricks Asset Bundles
+      tasks:
+        - task_key: DROP-TABLES
+          job_cluster_key: BDS-QA-JOB-CLUSTER
+          # existing_cluster_id: 0926-011623-2cqmpzng
+          notebook_task:
+            notebook_path: ../src/main/qa_framework_ddls.py
