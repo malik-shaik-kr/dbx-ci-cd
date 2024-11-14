@@ -48,4 +48,4 @@ resources:
           job_cluster_key: BDS-QA-JOB-CLUSTER
           # existing_cluster_id: 0926-011623-2cqmpzng
           notebook_task:
-            notebook_path: ../src/main/qa_framework_ddls.py
+            notebook_path: ../src/main/qa_framework_ddls.sql
