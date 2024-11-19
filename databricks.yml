@@ -94,10 +94,10 @@ targets:
             quartz_cron_expression: 0 0 5 * * ?
             timezone_id: UTC
             pause_status: PAUSED
-        # ddl-testing:
-        #   job_clusters:
-        #     - job_cluster_key: BDS-QA-JOB-CLUSTER
-        #       <<: *job_cluster
+        ddl-testing:
+          job_clusters:
+            - job_cluster_key: BDS-QA-JOB-CLUSTER
+              <<: *job_cluster
   stage:
     default: false
   production:
