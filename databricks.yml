@@ -88,9 +88,7 @@ targets:
         dd-test-job:
           job_clusters:
             - job_cluster_key: BDS-QA-JOB-CLUSTER
-              <<: *job_cluster 
-                spark_version: 12.2.x-scala2.12
-              # spark_version: 12.2.x-scala2.12
+              <<: *job_cluster
           schedule:
             quartz_cron_expression: 0 0 5 * * ?
             timezone_id: UTC
